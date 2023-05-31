@@ -1,0 +1,35 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+public class main {
+
+	public static void main(String[] args) {
+		
+		//ISO 8610 - ordem padrao de monstrar data YYYY/MM/DD
+		LocalDate hoje = LocalDate.now(); //Criado variavel de data
+		Locale brasil = new Locale("pt", "BR"); //setado a linguagem
+		
+		String nome = "Nome";
+		
+		System.out.println(hoje.getDayOfWeek().getDisplayName(TextStyle.FULL, brasil));
+		
+		String diaSemana = hoje.getDayOfWeek().getDisplayName(TextStyle.FULL, brasil);
+		String saudacao;
+		LocalDateTime agora = LocalDateTime.now(); //criar uma variavel pra usar o tempo de "agora"
+		
+		if (agora.getHour() >= 0 && agora.getHour() < 12 ) {
+		saudacao = "Bom dia";
+		} else if (agora.getHour() >= 12 && agora.getHour() < 18) {
+			saudacao = "Boa tarde";
+		} else if (agora.getHour() >= 18 && agora.getHour() <24) {
+			saudacao = "Boa noite";
+		} else {
+			saudacao = " ";
+		}
+		
+		System.out.printf("Ola, %s. Hoje eh	 %s, %s.%n", nome, diaSemana, saudacao.toUpperCase());
+	}
+
+}
